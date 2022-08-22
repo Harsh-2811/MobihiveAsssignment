@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block style %}
+<style>
+  .titleBar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}
+</style>
+{% endblock style %}
+{% block content %}
+<div class="container">
+
+    <div >
+
+        <div class="row d-flex" style="justify-content:center;height:100vh;align-items:center">
+           <div class="col-md-6" >
+            <form action="" method="post">{% csrf_token %}
+              {% if request.path == "/editProfile/" %}
+              <div class="titleBar">
+              <h4>Fillout Required Details </h5>
+              <a class="btn btn-outline-secondary" href="{% url 'home' %}">Go Home</a>
+              </div>
+              {% else %}
+              <h4>Fillout Required Details </h5>
+
+              {% endif %}
+              <div class="mb-3">
+                <label for="phonenumber" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phonenumber" {% if user.phone_number %} value="{{user.phone_number}}" {% endif %} name="phonenumber" pattern="+[0-9]{2} [0-9]{10}" required>
+                <small>Format: +91 9999999999</small>
+
+  
+              </div>
+              <div class="mb-3">
+                <label for="code" class="form-label">Secure Code</label>
+                <input type="text" class="form-control" {% if user.SecureCode %} value="{{user.SecureCode}}" maxlength="8" {% endif %} id="code" name="code" required>
+            </div>
+              <div class="mb-3">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" class="form-control" {% if user.city %} value="{{user.city}}" {% endif %} id="city" name="city" required>
+              </div>
+  
+              <div class="mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <textarea class="form-control" id="address" name="address" required rows="3">{% if user.address %}{{user.address}}{% endif %}</textarea>
+                </div>
+              
+              
+             
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+           </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

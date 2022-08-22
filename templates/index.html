@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+{% block style %}
+<style>
+.titleBar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}
+</style>
+{% endblock style %}
+{% block content %}
+<div
+  class="container shadow"
+  style="width: 800px; margin-top: 5em; padding: 2em"
+>
+
+    <div class="titleBar">
+        <h4>QR Code of {{user.username}}'s Profile</h4>
+
+        <a href="{% url 'editProfile' %}" class="btn btn-outline-primary">Edit Profile</a>
+    </div>
+  <div class="input-group mb-3">
+
+    <div style="margin: auto">
+        {% if user.qrcode.image %}
+        <img src="{{user.qrcode.image.url}}" />
+        {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
