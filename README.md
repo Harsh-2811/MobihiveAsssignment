@@ -5,3 +5,8 @@ Steps to Setup a Project
 3. Run Project : python manage.py runserver
 4. Visit Project : http://localhost:8000/ (use this not 127.0.0.0:8000 for Facebook Login)
 5. Visit Swagger UI : http://localhost:8000/swagger
+
+Use Admin Credentials
+Admin / Admin@123
+
+It will be helpful to generate JWT token
